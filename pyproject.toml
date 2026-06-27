@@ -1,0 +1,32 @@
+[project]
+name = "case-closed-agent"
+version = "0.1.0"
+description = "A deterministic, evidence-first agent for Railtown's Case Closed hackathon"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "detectice-sdk",
+]
+
+[build-system]
+requires = ["setuptools>=80"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+case-closed = "case_closed.cli:main"
+
+[tool.uv.sources]
+detectice-sdk = { git = "https://github.com/RailtownAI/case-closed.git" }
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.15.20",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py314"
